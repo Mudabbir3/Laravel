@@ -29,9 +29,9 @@ elixir(function (mix){
         ],'./public/css/libs.css')
 
         .scripts([
+            'jquery.js',
             'bootstrap.js',
             'bootstrap.min.js',
-            'jquery.js',
             'metisMenu.js',
             'sb-admin-2.js'
         ],'./public/js/libs.js')

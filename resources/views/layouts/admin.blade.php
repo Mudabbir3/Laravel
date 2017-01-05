@@ -38,25 +38,42 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Home</a>
+            <a class="navbar-brand" href="{{url('home')}}">Home</a>
+
         </div>
         <!-- /.navbar-header -->
 
         <ul class="nav navbar-top-links navbar-right">
 
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+
+                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
+                        {{--<i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }} <span class="caret"></span>--}}
+                    {{--</a>--}}
+                {{--<a class="dropdown-toggle" data-toggle="dropdown" href="#">--}}
+                    {{--<i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>--}}
+                {{--</a>--}}
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i>{{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="{{ url('/logout') }}"
+                           onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </li>
                 </ul>
+                    </li>
+                </div>
+
+
                 <!-- /.dropdown-user -->
             </li>
             <!-- /.dropdown -->
@@ -78,18 +95,20 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="{{url('admin')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> Users<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="panels-wells.html">All Users</a>
-                                {{--<a href="{{route('admin.users.index')}}">All Users</a>--}}
+                                {{--<a href="panels-wells.html">All Users</a>--}}
+                                <a href="{{route('users.index')}}">All Users</a>
 
                             </li>
                             <li>
-                                <a href="buttons.html">Create User</a>
+                                {{--<a href="buttons.html">Create User</a>--}}
+                                <a href="{{route('users.create')}}">Create User</a>
+
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -101,10 +120,10 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="panels-wells.html">All Posts</a>
+                                <a href="{{route('posts.index')}}">All Posts</a>
                             </li>
                             <li>
-                                <a href="buttons.html">Create Post</a>
+                                <a href="{{route('posts.create')}}">Create Post</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -246,6 +265,8 @@
 
 <!-- jQuery -->
 <script src="{{asset('js/libs.js')}}"></script>
+<script src="/js/app.js"></script>
+
 
 </body>
 
