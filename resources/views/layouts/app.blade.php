@@ -38,6 +38,11 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
+                    
+                     @if(Auth::user())
+                    <a href="{{url('admin')}}"><button class="btn btn-primary">Dashboard</button></a>
+                    @endif
+                    
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
