@@ -1,5 +1,9 @@
 $(function() {
 
+    $("#side-menu").metisMenu({
+        toggle: false
+    });
+
     $('#side-menu').metisMenu();
 
 });

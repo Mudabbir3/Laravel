@@ -18,14 +18,16 @@ elixir(function (mix){
       // .webpack('app.js');
 
         .styles([
-            'blog-post.css',
             'bootstrap.css',
             'bootstrap.min.css',
             'font-awesome.css',
+            'styles.css',
+            'timeline.css',
+            'blog-post.css',
             'metisMenu.css',
-            'sb-admin-2.css',
-            'style.css',
-            'timeline.css'
+            'sb-admin-2.css'
+
+
         ],'./public/css/libs.css')
 
         .scripts([
@@ -34,5 +36,7 @@ elixir(function (mix){
             'bootstrap.min.js',
             'metisMenu.js',
             'sb-admin-2.js'
+
+
         ],'./public/js/libs.js')
 });
